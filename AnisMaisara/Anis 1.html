@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Made For Anis</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+body{
+height:100vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+overflow:hidden;
+text-align:center;
+}
+
+.container{
+z-index:2;
+}
+
+h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+button{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:50px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#text{
+margin-top:30px;
+font-size:28px;
+max-width:600px;
+min-height:60px;
+}
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Made For Anis</h1>
+
+<button onclick="start()">Click here</button>
+
+<div id="text"></div>
+
+</div>
+
+<script>
+
+const message = "You are the most special person in my life. I miss you so much Anis Maisara. btw hari Ahad nanti awak ada kelas tak di UMK? ";
+
+let i = 0;
+
+function typeWriter(){
+if(i < message.length){
+document.getElementById("text").innerHTML += message.charAt(i);
+i++;
+setTimeout(typeWriter,50);
+}
+}
+
+function start(){
+
+typeWriter();
+
+setInterval(createHeart,300);
+
+}
+
+function createHeart(){
+
+const heart = document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=Math.random()*20+15+"px";
+
+heart.style.animationDuration=Math.random()*3+2+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+</script>
+
+</body>
+</html>
